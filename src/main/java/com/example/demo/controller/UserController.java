@@ -6,6 +6,8 @@ import com.example.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/user/")
@@ -20,5 +22,10 @@ public class UserController {
             return Header.OK(savedUser);
         }
         return Header.ERROR();
+    }
+
+    @GetMapping("")
+    public Header<List<User>> findAll() {
+        return Header.OK(userService.findAll());
     }
 }
